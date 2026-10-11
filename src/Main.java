@@ -1,8 +1,9 @@
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Main {
 
-    public static void main (String[] args) {
+    public static void main (String[] args) throws IOException {
 
         //1. Contrucción de 2 personas
 
@@ -11,11 +12,12 @@ public class Main {
 
         //2. Contrucción de 1 Mascota
 
-        Mascota mascota1 = new Mascota("Consuelo","Mixta",(byte) 7);
+        Mascota mascota1 = new Mascota("Consuelo","Perro",(byte) 7);
 
         //3. Contrucción de 1 Máquina de Soldar
 
-        MaquinaSoldar maquinaSoldar1 = new MaquinaSoldar("ESAB","Renegade VOLT ES 200i","200 A", new String[]{"Hierro", "Acero inoxidable"});
+        MaquinaSoldar maquinaSoldar1 = new MaquinaSoldar("ESAB","Renegade VOLT ES 200i","200 A", 2);
+        maquinaSoldar1.definirMetales();
 
         // Sacar pasaporte
         persona1.sacarPasaporte("114221645","Costarricense", LocalDate.of(2020,8,20), LocalDate.of(2025,8,20));
@@ -34,8 +36,8 @@ public class Main {
         persona2.jugar();
 
         // Soldar
-        maquinaSoldar1.soldar("Hierro");
-        maquinaSoldar1.soldar("Aluminio");
+        persona1.soldar(maquinaSoldar1, "Hierro");
+        persona2.soldar(maquinaSoldar1, "Aluminio");
     }
 }
 
